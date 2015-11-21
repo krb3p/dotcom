@@ -15,6 +15,27 @@
 	});
 
 	$(function() {
+		$("#formsubmit").click(function(){
+      var email = $('.email-input').val();
+      $.ajax({
+            url: "https://docs.google.com/a/upperlinecode.com/forms/d/1jD6m5lQVxcjDqXmU9vrwDmmajuOq6Bs9HytYs-Z1tmQ/formResponse",
+            data: {"entry.759984358": email},
+            type: "POST",
+            dataType: "xml",
+            statusCode: {
+                0: function() {
+                    var success = "Thank you!"
+                },
+                200: function() {
+                    var success = "Thank you!"
+                }
+            }
+        });
+      $(".formcontainer").fadeOut();
+      $(".formcontainer").replaceWith("<h3>Thank You!</h3>");
+      $(".formcontainer").fadeIn();
+    	}
+   );
 
 		var	$window = $(window),
 			$body = $('body');
